@@ -1,0 +1,36 @@
+global function Sv_ItemInventory_Init
+global function SvPlayerInventory_ItemCount
+global function PlayerInventory_CountTurrets
+global function PlayerInventory_RefreshEquippedState
+global function PlayerInventory_StartCriticalSection
+global function PlayerInventory_EndCriticalSectionForWeaponOnEndFrame
+
+void function Sv_ItemInventory_Init()
+{
+
+}
+
+int function SvPlayerInventory_ItemCount( entity player )
+{
+	return 0
+}
+
+int function PlayerInventory_CountTurrets( entity player )
+{
+	return 0
+}
+
+void function PlayerInventory_RefreshEquippedState( entity player )
+{
+
+}
+
+void function PlayerInventory_StartCriticalSection( entity player )
+{
+
+}
+
+void function PlayerInventory_EndCriticalSectionForWeaponOnEndFrame( entity player )
+{
+
+}
