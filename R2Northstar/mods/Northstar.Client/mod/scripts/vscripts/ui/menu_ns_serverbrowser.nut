@@ -186,11 +186,11 @@ void function OnServerFocused( var button )
 
 string function FormatServerDescription( int server )
 {
-	string ret = "\n\n\n\n"
+	string ret = "\n\n\n\n\n\n\n"
 	
-	ret += NSGetServerName( server ) + "\n"
-	ret += format( "%i/%i players\n", NSGetServerPlayerCount( server ), NSGetServerMaxPlayerCount( server ) )
-	ret += NSGetServerDescription( server ) + "\n\n"
+	ret += Localize("#SERVER_NAME")+NSGetServerName( server ) + "\n"
+	ret += Localize("#SERVER_PLAYER")+format( "%i/%i players\n", NSGetServerPlayerCount( server ), NSGetServerMaxPlayerCount( server ) )
+	ret += Localize("#SERVER_DESCRIPTION")+NSGetServerDescription( server ) + "\n\n"
 	
 	ret += "Required Mods: \n"
 	for ( int i = 0; i < NSGetServerRequiredModsCount( server ); i++ )
