@@ -188,11 +188,11 @@ string function FormatServerDescription( int server )
 {
 	string ret = "\n\n\n\n\n\n\n"
 	
-	ret += Localize("#SERVER_NAME")+NSGetServerName( server ) + "\n"
-	ret += Localize("#SERVER_PLAYER")+format( "%i/%i players\n", NSGetServerPlayerCount( server ), NSGetServerMaxPlayerCount( server ) )
-	ret += Localize("#SERVER_DESCRIPTION")+NSGetServerDescription( server ) + "\n\n"
+	ret += Localize("#SERVER_NAME") + NSGetServerName( server ) + "\n"
+	ret += Localize("#SERVER_PLAYER") + format( "%i/%i", NSGetServerPlayerCount( server ), NSGetServerMaxPlayerCount( server ) ) + Localize("#PLAYER") + "\n"
+	ret += Localize("#SERVER_DESCRIPTION") + NSGetServerDescription( server ) + "\n\n"
 	
-	ret += "Required Mods: \n"
+	ret += Localize("#SERVER_NAME") + "\n"
 	for ( int i = 0; i < NSGetServerRequiredModsCount( server ); i++ )
 		ret += "    " + NSGetServerRequiredModName( server, i ) + " v" + NSGetServerRequiredModVersion( server, i ) + "\n"
 	

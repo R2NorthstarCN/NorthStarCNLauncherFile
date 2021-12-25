@@ -104,15 +104,15 @@ string function FormatModDescription( string modName )
 {
 	string ret
 	// version
-	ret += format( "Version %s\n", NSGetModVersionByModName( modName ) ) 
+	ret += Localize("#VERSION") + format( "%s\n", NSGetModVersionByModName( modName ) ) 
 	
 	// download link
 	string modLink = NSGetModDownloadLinkByModName( modName )
 	if ( modLink.len() != 0 )
-		ret += format( "Download link: \"%s\"\n", modLink )
+		ret += Localize("#DOWNLOAD_LINK") + format( "\"%s\"\n", modLink )
 	
 	// load priority
-	ret += format( "Load Priority: %i\n", NSGetModLoadPriority( modName ) )
+	ret += Localize("#LOAD_PRIORITY") + format( "%i\n", NSGetModLoadPriority( modName ) )
 	
 	// todo: add ClientRequired here
 	
@@ -120,7 +120,7 @@ string function FormatModDescription( string modName )
 	array<string> modCvars = NSGetModConvarsByModName( modName )
 	if ( modCvars.len() != 0 )
 	{
-		ret += "ConVars: "
+		ret += Localize("#CONVARS")
 	
 		for ( int i = 0; i < modCvars.len(); i++ )
 		{
@@ -134,7 +134,7 @@ string function FormatModDescription( string modName )
 	}
 	
 	// description
-	ret += format( "\n%s\n", NSGetModDescriptionByModName( modName ) )
+	ret += "\n" + Localize("#MOD_DESCRIPTION") + format( "\n%s\n", NSGetModDescriptionByModName( modName ) )
 	
 	return ret
 }
