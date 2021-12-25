@@ -192,7 +192,7 @@ string function FormatServerDescription( int server )
 	ret += Localize("#SERVER_PLAYER") + format( "%i/%i", NSGetServerPlayerCount( server ), NSGetServerMaxPlayerCount( server ) ) + Localize("#PLAYER") + "\n"
 	ret += Localize("#SERVER_DESCRIPTION") + NSGetServerDescription( server ) + "\n\n"
 	
-	ret += Localize("#SERVER_NAME") + "\n"
+	ret += Localize("#REQUIRED_MOD") + "\n"
 	for ( int i = 0; i < NSGetServerRequiredModsCount( server ); i++ )
 		ret += "    " + NSGetServerRequiredModName( server, i ) + " v" + NSGetServerRequiredModVersion( server, i ) + "\n"
 	
