@@ -34,7 +34,7 @@ resource/ui/menus/mods_browse.menu
 			ControlName				ImagePanel
 			InheritProperties		MenuTopBar
 		}
-		
+
 		ButtonRowAnchor
 		{
 			ControlName				Label
@@ -43,7 +43,7 @@ resource/ui/menus/mods_browse.menu
 			xpos                    120
             ypos                    160
 		}
-		
+
 		//test
 		//{
 		//	ControlName ListPanel
@@ -243,7 +243,7 @@ resource/ui/menus/mods_browse.menu
 			navUp					BtnServer14
 			navDown					BtnServer1
 		}
-		
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		LabelDetails
@@ -279,7 +279,7 @@ resource/ui/menus/mods_browse.menu
 			pin_to_sibling			NextMapImage
 			pin_corner_to_sibling	BOTTOM_RIGHT
 			pin_to_sibling_corner	BOTTOM_RIGHT
-		
+
 			xpos                    -12
 			ypos                    0
 			zpos 1
