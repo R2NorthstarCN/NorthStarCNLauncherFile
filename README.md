@@ -9,4 +9,4 @@
 -->
 # NorthStarCNLauncherFile
 NorthStarCN客户端文件
-基於NorthStar版本 1.1.2
+基於NorthStar版本 1.1.3
