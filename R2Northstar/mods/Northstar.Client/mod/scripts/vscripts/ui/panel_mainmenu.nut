@@ -886,12 +886,7 @@ void function SpotlightButton_Activate( var button )
 		}
 	}
 	else
-	{	//直接打开外部浏览器
-		// if ( link.find( "https://jq.qq.com" ) == 0  )
-			LaunchExternalWebBrowser( link, WEBBROWSER_FLAG_FORCEEXTERNAL )//打开外部浏览器
-		// else
-		// 	LaunchExternalWebBrowser( link, WEBBROWSER_FLAG_MUTEGAME ) //打开游戏内origin浏览器
-
-		// LaunchExternalWebBrowser( link, WEBBROWSER_FLAG_FORCEEXTERNAL )
-		// LaunchExternalWebBrowser( link, WEBBROWSER_FLAG_FORCEEXTERNAL )	}
+	{
+		LaunchExternalWebBrowser( link, WEBBROWSER_FLAG_FORCEEXTERNAL )//打开外部浏览器
+	}
 }

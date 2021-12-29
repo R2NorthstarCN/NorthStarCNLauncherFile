@@ -30,7 +30,7 @@ void function InitModMenu()
 	AddMenuFooterOption( menu, BUTTON_B, "#B_BUTTON_BACK", "#BACK" )
 	AddMenuFooterOption( menu, BUTTON_Y, "#Y_RELOAD_MODS", "#RELOAD_MODS", OnReloadModsButtonPressed )
 	AddMenuFooterOption( menu, BUTTON_BACK, "#BACK_AUTHENTICATION_AGREEMENT", "#AUTHENTICATION_AGREEMENT", OnAuthenticationAgreementButtonPressed )
-
+	
 	foreach ( var button in GetElementsByClassname( GetMenu( "ModListMenu" ), "ModButton" ) )
 	{
 		AddButtonEventHandler( button, UIE_GET_FOCUS, OnModMenuButtonFocused )
@@ -45,20 +45,20 @@ void function OnModMenuOpened()
 	Hud_SetText( Hud_GetChild( GetMenu( "ModListMenu" ), "Title" ), "#MENU_TITLE_MODS" )
 
 	array<var> buttons = GetElementsByClassname( GetMenu( "ModListMenu" ), "ModButton" )
-
+	
 	// disable all buttons, we'll enable the ones we need later
 	foreach ( var button in buttons )
 	{
 		Hud_SetEnabled( button, false )
 		Hud_SetVisible( button, false )
 	}
-
+	
 	array<string> modNames = NSGetModNames()
 	for ( int i = 0; i < modNames.len() && i < buttons.len(); i++ )
 	{
 		Hud_SetEnabled( buttons[ i ], true )
 		Hud_SetVisible( buttons[ i ], true )
-
+		
 		SetModMenuNameText( buttons[ i ] )
 	}
 }
@@ -77,7 +77,7 @@ void function SetModMenuNameText( var button )
 	if ( NSIsModEnabled( modName ) )
 		SetButtonRuiText( button, modName + " v" + NSGetModVersionByModName( modName ) )
 	else
-		SetButtonRuiText( button, modName + " (DISABLED)" )
+		SetButtonRuiText( button, modName + " (DISABLED)" ) 
 }
 
 void function OnModMenuButtonPressed( var button )
@@ -85,7 +85,7 @@ void function OnModMenuButtonPressed( var button )
 	string modName = NSGetModNames()[ int ( Hud_GetScriptID( button ) ) ]
 	NSSetModEnabled( modName, !NSIsModEnabled( modName ) )
 	SetModMenuNameText( button )
-
+	
 	file.shouldReloadModsOnEnd = true
 }
 
@@ -94,7 +94,7 @@ void function OnModMenuButtonFocused( var button )
 	string modName = NSGetModNames()[ int ( Hud_GetScriptID( button ) ) ]
 
 	var rui = Hud_GetRui( Hud_GetChild( GetMenu( "ModListMenu" ), "LabelDetails" ) )
-
+	
 	RuiSetGameTime( rui, "startTime", -99999.99 ) // make sure it skips the whole animation for showing this
 	RuiSetString( rui, "headerText", modName )
 	RuiSetString( rui, "messageText", FormatModDescription( modName ) )
@@ -104,24 +104,24 @@ string function FormatModDescription( string modName )
 {
 	string ret
 	// version
-	ret += Localize("#VERSION") + format( "%s\n", NSGetModVersionByModName( modName ) )
-
+	ret += format( "Version %s\n", NSGetModVersionByModName( modName ) ) 
+	
 	// download link
 	string modLink = NSGetModDownloadLinkByModName( modName )
 	if ( modLink.len() != 0 )
-		ret += Localize("#DOWNLOAD_LINK") + format( "\"%s\"\n", modLink )
-
+		ret += format( "Download link: \"%s\"\n", modLink )
+	
 	// load priority
-	ret += Localize("#LOAD_PRIORITY") + format( "%i\n", NSGetModLoadPriority( modName ) )
-
+	ret += format( "Load Priority: %i\n", NSGetModLoadPriority( modName ) )
+	
 	// todo: add ClientRequired here
-
+	
 	// convars
 	array<string> modCvars = NSGetModConvarsByModName( modName )
 	if ( modCvars.len() != 0 )
 	{
-		ret += Localize("#CONVARS")
-
+		ret += "ConVars: "
+	
 		for ( int i = 0; i < modCvars.len(); i++ )
 		{
 			if ( i != modCvars.len() - 1 )
@@ -129,13 +129,13 @@ string function FormatModDescription( string modName )
 			else
 				ret += format( "\"%s\"", modCvars[ i ] )
 		}
-
+		
 		ret += "\n"
 	}
-
+	
 	// description
-	ret += "\n" + Localize("#MOD_DESCRIPTION") + format( "\n%s\n", NSGetModDescriptionByModName( modName ) )
-
+	ret += format( "\n%s\n", NSGetModDescriptionByModName( modName ) )
+	
 	return ret
 }
 
@@ -149,12 +149,12 @@ void function ReloadMods()
 	NSReloadMods()
 	ClientCommand( "reload_localization" )
 	ClientCommand( "loadPlaylists" )
-
-	bool svCheatsOriginal = GetConVarBool( "sv_cheats" )
+	
+	bool svCheatsOriginal = GetConVarBool( "sv_cheats" )	
 	SetConVarBool( "sv_cheats", true )
 	ClientCommand( "weapon_reparse" ) // weapon_reparse only works if a server is running and sv_cheats is 1, gotta figure this out eventually
 	SetConVarBool( "sv_cheats", svCheatsOriginal )
-
+	
 	// note: the logic for this seems really odd, unsure why it doesn't seem to update, since the same code seems to get run irregardless of whether we've read weapon data before
 	ClientCommand( "uiscript_reset" )
 }
