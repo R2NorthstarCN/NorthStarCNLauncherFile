@@ -652,7 +652,6 @@ void function UpdateTrialLabel()
 	Hud_SetText( file.trialLabel, "+ NorthStarCN" )
 	Hud_SetVisible( file.trialLabel, true )
 
-
 	//while ( GetTopNonDialogMenu() == file.menu )
 	//{
 	//	isTrialVersion = Script_IsRunningTrialVersion()

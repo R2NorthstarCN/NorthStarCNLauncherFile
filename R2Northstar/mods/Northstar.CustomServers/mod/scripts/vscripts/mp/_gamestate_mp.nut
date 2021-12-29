@@ -183,6 +183,10 @@ void function GameStateEnter_Prematch()
 
 void function StartGameWithoutClassicMP()
 {
+	foreach ( entity player in GetPlayerArray() )
+		if ( IsAlive( player ) )
+			player.Die()
+
 	WaitFrame() // wait for callbacks to finish
 	
 	// need these otherwise game will complain
@@ -451,6 +455,7 @@ void function GameStateEnter_SwitchingSides_Threaded()
 
 void function PlayerWatchesSwitchingSidesKillReplay( entity player, bool doReplay, float replayLength )
 {
+	player.EndSignal( "OnDestroy" )
 	player.FreezeControlsOnServer()
 
 	ScreenFadeToBlackForever( player, SWITCHING_SIDES_DELAY_REPLAY ) // automatically cleared 

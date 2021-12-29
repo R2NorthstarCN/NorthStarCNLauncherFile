@@ -49,6 +49,7 @@ void function BurnMeter_Init()
 	AddCallback_OnClientConnected( InitBurncardsForLateJoiner )
 	
 	AddCallback_OnPlayerRespawned( StartPhaseRewindLifetime )
+	AddCallback_OnTitanBecomesPilot( RemoveAmpedWeaponsForTitanPilot )
 	
 	// necessary signals
 	RegisterSignal( "StopAmpedWeapons" )
@@ -241,7 +242,17 @@ void function PlayerUsesAmpedWeaponsBurncardThreaded( entity player )
 	{
 		weapon.RemoveMod( "silencer" ) // both this and the burnmod will override firing fx, if a second one overrides this we crash
 		foreach ( string mod in GetWeaponBurnMods( weapon.GetWeaponClassName() ) )
-			weapon.AddMod( mod )
+		{
+			// catch incompatibilities just in case
+			try
+			{
+				weapon.AddMod( mod )
+			}
+			catch( ex )
+			{
+				weapons.removebyvalue( weapon )
+			}
+		}
 	
 		// needed to display amped weapon time left
 		weapon.SetScriptFlags0( weapon.GetScriptFlags0() | WEAPONFLAG_AMPED )
@@ -261,6 +272,13 @@ void function PlayerUsesAmpedWeaponsBurncardThreaded( entity player )
 		
 		weapon.SetScriptFlags0( weapon.GetScriptFlags0() & ~WEAPONFLAG_AMPED )
 	}
+}
+
+void function RemoveAmpedWeaponsForTitanPilot( entity player, entity titan )
+{
+	foreach ( entity weapon in player.GetMainWeapons() )
+		foreach ( string mod in GetWeaponBurnMods( weapon.GetWeaponClassName() ) )
+			weapon.RemoveMod( mod )
 }
 
 void function PlayerUsesSmartPistolBurncard( entity player )

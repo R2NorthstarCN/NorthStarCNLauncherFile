@@ -824,15 +824,11 @@ void function UpdateWhatsNewData()
 	RuiSetBool( file.whatsNew, "isVisible", isVisible )
 }
 
-void function UpdateSpotlightData()//更新主界面右侧面板
+void function UpdateSpotlightData()
 {
-
 	SetSpotlightButtonData( file.spotlightButtons[0], expect string( NSGetCustomMainMenuPromoData( eMainMenuPromoDataProperty.largeButtonUrl ) ), expect int( NSGetCustomMainMenuPromoData( eMainMenuPromoDataProperty.largeButtonImageIndex ) ), expect string( NSGetCustomMainMenuPromoData( eMainMenuPromoDataProperty.largeButtonTitle ) ), expect string( NSGetCustomMainMenuPromoData( eMainMenuPromoDataProperty.largeButtonText ) ) )
 	SetSpotlightButtonData( file.spotlightButtons[1], expect string( NSGetCustomMainMenuPromoData( eMainMenuPromoDataProperty.smallButton1Url ) ), expect int( NSGetCustomMainMenuPromoData( eMainMenuPromoDataProperty.smallButton1ImageIndex ) ), expect string( NSGetCustomMainMenuPromoData( eMainMenuPromoDataProperty.smallButton1Title ) ) )
 	SetSpotlightButtonData( file.spotlightButtons[2], expect string( NSGetCustomMainMenuPromoData( eMainMenuPromoDataProperty.smallButton2Url ) ), expect int( NSGetCustomMainMenuPromoData( eMainMenuPromoDataProperty.smallButton2ImageIndex ) ), expect string( NSGetCustomMainMenuPromoData( eMainMenuPromoDataProperty.smallButton2Title ) ) )
-	// SetSpotlightButtonData( file.spotlightButtons[0], "https://github.com/R2NorthstarCN/NorthStarCN_WIKI", 10 , "歡迎使用 NorthStarCN !" )
-	// SetSpotlightButtonData( file.spotlightButtons[1], "https://github.com/R2NorthstarCN/NorthStarCN_WIKI/wiki", 2 , "點擊訪問 NorthStarCN Wiki以獲得幫助" )
-	// SetSpotlightButtonData( file.spotlightButtons[2], "https://jq.qq.com/?_wv=1027&k=O48NYnl8", 23 , "點擊加入官方QQ群" )
 }
 
 void function SetSpotlightButtonData( var button, string link, int imageIndex, string title, string details = "skip" )
@@ -897,6 +893,5 @@ void function SpotlightButton_Activate( var button )
 		// 	LaunchExternalWebBrowser( link, WEBBROWSER_FLAG_MUTEGAME ) //打开游戏内origin浏览器
 
 		// LaunchExternalWebBrowser( link, WEBBROWSER_FLAG_FORCEEXTERNAL )
-		// LaunchExternalWebBrowser( link, WEBBROWSER_FLAG_FORCEEXTERNAL )
-	}
+		// LaunchExternalWebBrowser( link, WEBBROWSER_FLAG_FORCEEXTERNAL )	}
 }
