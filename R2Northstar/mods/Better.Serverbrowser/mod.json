@@ -1,0 +1,31 @@
+{
+	"Name" : "Better.Serverbrowser",
+	"Description" : "Improves the northstar serverbrowser\n\nContributors:\n  - Fifty#8113\n  - Meelo#6036\n  - Kami-Kaze#0001\n\nReport issues at: https://github.com/F1F7Y/Better.Serverbrowser/issues\nor on discord: Fifty#8113",
+	"Version": "1.2.3",
+	"LoadPriority": 3,
+	"ConVars": [
+		{
+			"Name": "filter_hide_empty",
+			"DefaultValue": "0"
+		},
+		{
+			"Name": "filter_hide_full",
+			"DefaultValue": "0"
+		},
+		{
+			"Name": "filter_hide_protected",
+			"DefaultValue": "0"
+		},
+		{
+			"Name": "filter_map",
+			"DefaultValue": "0"
+		},
+		{
+			"Name": "filter_gamemode",
+			"DefaultValue": "0"
+		}
+	],
+	"Localisation": [
+		"resource/better_serverbrowser_localisation_%language%.txt"
+	]
+}
