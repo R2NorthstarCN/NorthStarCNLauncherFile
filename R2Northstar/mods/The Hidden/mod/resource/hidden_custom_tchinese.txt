@@ -1,12 +1,12 @@
 "lang"
 {
-	"Language" "english"
+	"Language" "tchinese"
 	"Tokens"
 	{
 		"PL_hidden" "幽靈獵殺"
 		"PL_hidden_lobby" "幽靈獵殺模式大廳"
 		"PL_hidden_desc" "一位玩家成了幽靈隱蔽起來了。去獵殺他們吧!"
-		"PL_hidden_hint" "一位玩家成了幽靈隱蔽起來了。去獵殺他們吧!"
+		"PL_hidden_hint" "一位玩家成了幽靈隱蔽起來了，幽灵会灭杀其他玩家。\n睁大眼睛，竖起耳朵，找出并击杀幽灵!"
 		"PL_hidden_abbr" "幽靈獵殺"
 		"GAMEMODE_HIDDEN" "幽靈獵殺"
 	}

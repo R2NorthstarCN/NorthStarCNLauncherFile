@@ -1,6 +1,6 @@
 "lang"
 {
-	"Language" "english"
+	"Language" "tchinese"
 	"Tokens"
 	{
 		"PL_chamber" "最後一發"
