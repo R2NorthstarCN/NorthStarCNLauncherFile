@@ -1,7 +1,7 @@
 <!--
  * @Author: HK560
  * @Date: 2021-12-25 13:34:04
- * @LastEditTime: 2021-12-31 11:51:40
+ * @LastEditTime: 2021-12-31 12:00:10
  * @LastEditors: HK560
  * @Description:
  * @FilePath: \NorthStarCN_WIKIh:\github\ttf\NorthStarCNLauncherFile\README.md
@@ -36,9 +36,13 @@ NorthstarMods:
 - 整合 Better.serverbrowser
 - 修改了面板
 - 修复在`EvacEpilogue` 和 `Postmatch`游戏状态下丢失重生期限的问题
+- 修复speedball和空投造成的崩溃
+- 修复4:3屏幕ui布局问题
+- 使用`GetPrivateMatchModes`取代硬编码的serverbrowserModes
 - 防止在新玩家加入时候再次设置最后一名幸存者
 - 修复超出数组访问的问题，添加服务器计数
 - 优化ui
+- 修复一些其他杂七杂八的问题
 
 
 原文：
