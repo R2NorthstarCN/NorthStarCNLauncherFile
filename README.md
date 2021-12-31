@@ -1,7 +1,7 @@
 <!--
  * @Author: HK560
  * @Date: 2021-12-25 13:34:04
- * @LastEditTime: 2021-12-31 12:00:10
+ * @LastEditTime: 2021-12-31 12:56:29
  * @LastEditors: HK560
  * @Description:
  * @FilePath: \NorthStarCN_WIKIh:\github\ttf\NorthStarCNLauncherFile\README.md
@@ -9,7 +9,9 @@
 -->
 # NorthStarCNLauncherFile
 NorthStarCN客户端 1.3.0 更新
-- 基於NorthStar版本 1.3.0‘
+- 基於NorthStar版本 1.3.0
+
+- 添加新模式“最後一發”和“幽靈獵殺”模式
 
 NorthstarLauncher:
 - 避免密码空请求

@@ -1,0 +1,12 @@
+"lang"
+{
+	"Language" "english"
+	"Tokens"
+	{
+		"PL_hidden" "The Hidden"
+		"PL_hidden_lobby" "The Hidden Lobby"
+		"PL_hidden_desc" "One player is invisible. The others hunt them."
+		"PL_hidden_abbr" "HIDDEN"
+		"GAMEMODE_HIDDEN" "The Hidden"
+	}
+}
