@@ -1,88 +1,130 @@
 <!--
  * @Author: HK560
  * @Date: 2021-12-25 13:34:04
- * @LastEditTime: 2021-12-31 12:56:29
+ * @LastEditTime: 2022-01-06 21:43:11
  * @LastEditors: HK560
  * @Description:
  * @FilePath: \NorthStarCN_WIKIh:\github\ttf\NorthStarCNLauncherFile\README.md
  * My Blog: https://blog.hk560.top
 -->
 # NorthStarCNLauncherFile
-NorthStarCN客户端 1.3.0 更新
-- 基於NorthStar版本 1.3.0
-
-- 添加新模式“最後一發”和“幽靈獵殺”模式
+NorthStarCN客户端 1.4.0 更新
+- 基於NorthStar版本 1.4.0
 
 NorthstarLauncher:
-- 避免密码空请求
-- 添加一些崩溃处理的堆栈跟踪
-- 改为服务器token验证系统来验证游戏服务器信息，而不是以前的IP验证
-
-NorthstarMasterServer:
-- 修复当服务器描述为空参数的错误
-- 添加 可选的env变量来信任代理
-- 改为服务器token验证系统来验证游戏服务器信息，而不是以前的IP验证
+- 添加版本来源信息
+- 强制IPV4，目前IPV6仍然不支持
+- 弃用```Tier0_InitOrigin hook```
+- 在InitialiseNorthstar中初始化crul避免引发其他问题
+- 分隔出通用crul设置，再次添加`-msinsecure`设置
+- 为大多数安装错误添加更多清晰的错误信息
+- 启用curl日志输出到windows的控制台
+- 修复语言选择问题，减少“files corrupted”错误，现在会尽可能的清晰显示Origin错误信息
+- 启用rpak文件系统的hooks
+- 不再强制netchan在Level Transitions期间受到限制，现在可以为该限制进行设置
+- 初步完成封禁系统
+- 移除覆写`max_players`的日志信息
+- 添加关闭spewfunc日志的选项
+- 为封禁系统增加断连功能
+- 增加`unban`命令
+- 添加 wsock32 代理！（用起来真的不错）
+- 同样存储`ShouldLoadNorthstar()`到wsock32代理
+- 使wsock3代理成为可用选项
+- 添加`clearbanlist`命令
+- 添加聊天频率限制和抓取聊天信息系统
+- 更改部分架构修复win7错误问题
+- 重构以允许服务器使用心跳包重新注册它们
 
 NorthstarMods:
-- 飞船信息更改，修复了当跳机时候无限强化武器的bug
-- 修复 `ns_private_match_only_host_can_start`
-- 修复了当玩家从泰坦下机丢失`menu_category`武器装备继而引发的游戏错误
-- 修复了烈火战场夺旗之后断连造成的游戏崩溃
-- 修复当玩家未死亡的时候`classic_mp 0`造成的游戏崩溃
-- 修复ctf模式中当玩家夺旗后离开造成的问题
-- 修复 burnmeter 和 fastball 造成的崩溃
-- 阻止铁驭对铁驭中撤离阶段仍能得分
-- 阻止小规模冲突中撤离阶段仍能得分
-- 阻止泰坦争斗中如果tits打开了撤离阶段仍能得分
-- 修复全图永久声纳问题
-- 整合 Better.serverbrowser
-- 修改了面板
-- 修复在`EvacEpilogue` 和 `Postmatch`游戏状态下丢失重生期限的问题
-- 修复speedball和空投造成的崩溃
-- 修复4:3屏幕ui布局问题
-- 使用`GetPrivateMatchModes`取代硬编码的serverbrowserModes
-- 防止在新玩家加入时候再次设置最后一名幸存者
-- 修复超出数组访问的问题，添加服务器计数
-- 优化ui
-- 修复一些其他杂七杂八的问题
+- 修复私人房间的模式偏移
+- 修复游戏结束时候重播视角和能够重生的问题
+- 删除显示刷新表的垃圾控制台信息
+- 禁用战争游戏开始时的副手武器
+- 为泰坦和铁驭装备返回时增加计数器检查
+- 修复私人比赛模式被服务器浏览器影响的问题
+- 允许烈火战场模式游玩非烈火战场地图
+- 修复战争游戏开头动作问题
+- 修复比赛设置的一些问题
+- 修复飞船跳机阶段复活在错误的队伍
+- 添加关闭铁驭内部碰撞的设置
+- 修复一些非法字符
+- 修复离开泰坦后空速重置问题
+- 修复泰坦争斗开头可能会引发崩溃的问题
+- 集成最后一发和幽灵猎杀模式
+- 更新了_ai_mp.gnut文件
+- 确保完全经过验证之后才解锁北极星启动按钮
+- 天幕骇客增加可用地图
+- 修复禁用武器时候切换装备造成的问题
+- 在重新计算连杀之前重置连杀数
+- 强化修复
 
+NorthstarMasterServer:
+- 重构以允许服务器使用心跳包重新注册它们
 
 原文：
 
 NorthstarLauncher:
-- escape password entry request
-- add proper stack traces to crash handler
-- move to server auth token system for verifying gameserver auth messages, rather than ip
+- add version resource
+- force ipv4 while ipv6 is still unsupported
+- 弃用```Tier0_InitOrigin hook```
+- 在InitialiseNorthstar种初始化crul避免引发其他问题
+- Isolate out common curl options and add -msinsecure option again
+- Add more clear error message for the most common install mistake
+- log curl output to the windows console
+- Language selection/detection fixes, no more "files corrupted" error, will throw the proper Origin error now :D
+- setup for rpak filesystem hooks
+- don't enforce netchan limits during level transitions, change how limit mode works
+- initial work for ban system
+- remove logging for overwriting max_players
+- add the ability to disable spewfunc logging
+- add disconnects to ban system
+- add unban command
+- add wsock32 proxy!!! (it works quite nicely)
+- restore ShouldLoadNorthstar() to wsock32 proxy as well
+- make wsock32 proxy opt-in
+- add clearbanlist command
+- add chat ratelimits and system for hooking chat messages
+- Merge pull request #19 from p0358/main
+- change -waitfordebugger check to use CommandLine()
+- refactor to allow servers to reregister themselves in heartbeat
 
+
+NorthstarMods:
+- fix modes being offset in private match
+- fix end of game replay perspective and repsawns during replays
+- Remove printt refresh table; spams console
+- Disable offhand weapons during wargames intro
+- Added a pro screen check to titan to pilot loadout retrieval.
+- fix private match modes being affected by server browser
+- allow lf to work on non-lf maps
+- Update northstar_client_localisation_japanese.txt
+- Sync wargames intro animations
+- add fd boost shop boosts
+- fix race condition with games being won in a death callback for roundwinning killreplays
+- Fix portuguese localisation line endings
+- Add .gitattributes
+- fix dropship intro using the wrong team's spawns
+- add the ability to disable inter-pilot collision
+- Translate coop portuguese strings
+- Reencode translations as UTF-16 little endian
+- Fix whitespace
+- Fix airaccel reset on leaving titan (#51)
+- fix potential crash in ttdm intro
+- adds OITC and Hidden gamemodes
+- adds hidden and OITC localisation
+- Adds OITC and Hidden to playlist
+- adds OITC and Hidden to mod.json
+- Update _ai_mp.gnut
+- ensure game is fully authenticated before unlocking launch northstar button
+- added fastball config for map complex
+- added fastball config for map forwardbase kodai
+- added fastball config for map colony
+- [feat] adding translations for hidden game mode
+- [feat] adding translation for 'one in the chamber' game mode
+- [feat] no_pilot_collision key
+- Fix changing loadouts bypassing restricted weapons (#52)
+- Resets killstreak first before calculating kills.
+- Big Boost/Earn Meter Fixes!
 
 NorthstarMasterServer:
-- Fix error when server description is empty
-- adds optional env variable to trust proxy
-- move to server auth token system for verifying gameserver auth messages, rather than ip
-
-NorthstarLauncher:
-- dropship intro changes and fix for infinite amped weapons on disembark
-- fix ns_private_match_only_host_can_start
-- Fixed the game erroring when disembarking from a titan and the player has a weapon missing "menu_category" equipped (like titan weapons).
-- Add portuguese translations
-- fix crash when disconnecting from livefire with flag held
-- fix classic_mp 0 crashing if players are alive
-- fix ctf if a player leaves when holding the flag
-- fix burnmeter and fastball crashes
-- Stop Pilots vs Pilots from scoring during the epilogue
-- Stop Skirmish from scoring during the epilogue
-- Stop Skirmish from scoring during the epilogue
-- Stop Titan Brawl from scoring during the epilogue if tits turned on lol
-- Add northstar_client_localisation_german.txt
-- fixed map hack permanent sonar (real)!!!
-- Commit Better.serverbrowser
-- Change panel
-- Fix missing respawn grace during EvacEpilogue and Postmatch gamestate
-- speedball and dropship crash fixes
-- Fix #17
-- Merge pull request #34 from abarichello/fix/dropship-offhand-weapon
-- use GetPrivateMatchModes rather than hardcoding serverbrowser modes
-- Prevents setting last survivor again when new player connects
-- Add Russian locals
-- Fix out of range array access; add server count
-- Add server count; improve UI
+- refactor to allow preexisting gameservers to register in heartbeat

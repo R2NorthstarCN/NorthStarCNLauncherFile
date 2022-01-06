@@ -6,6 +6,7 @@ void function Sh_GamemodeHidden_Init()
 {
 	// create custom gamemode
 	AddCallback_OnCustomGamemodesInit( CreateGamemodeHidden )
+	AddCallback_OnRegisteringCustomNetworkVars( HiddenRegisterNetworkVars )
 }
 
 void function CreateGamemodeHidden()
@@ -31,4 +32,13 @@ void function CreateGamemodeHidden()
 	#if !UI
 		GameMode_SetScoreCompareFunc( GAMEMODE_HIDDEN, CompareAssaultScore )
 	#endif
+}
+
+void function HiddenRegisterNetworkVars()
+{
+	if ( GAMETYPE != GAMEMODE_HIDDEN )
+		return
+
+	Remote_RegisterFunction( "ServerCallback_YouAreHidden" )
+	Remote_RegisterFunction( "ServerCallback_AnnounceHidden" )
 }
