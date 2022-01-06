@@ -69,7 +69,10 @@ void function InitMainMenu()
 #endif // CONSOLE_PROG
 
 void function OnMainMenu_Open()
-{
+{	
+	string playerName
+	playerName = GetConVarString("name")
+	SetConVarString("ns_auth_player_name",playerName)
 	Signal( uiGlobal.signalDummy, "EndOnMainMenu_Open" )
 	EndSignal( uiGlobal.signalDummy, "EndOnMainMenu_Open" )
 
