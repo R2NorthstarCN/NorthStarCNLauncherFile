@@ -100,22 +100,22 @@ void function UpdatePrivateMatchModesAndMaps()
 	{
 		if ( filterArguments.filterMaps.find( map ) != -1 )
 			continue
-
+			
 		filterArguments.filterMaps.append( map )
-
+		
 		string localized = GetMapDisplayName( map )
 		Hud_DialogList_AddListItem( Hud_GetChild( file.menu, "SwtBtnSelectMap" ) , localized, string( enum_ + 1 ) )
-	}
-
+	}		
+	
 	array<string> realModes = [ "private_match" ]
 	realModes.extend( GetPrivateMatchModes() )
-
+	
 	foreach( int enum_, string mode in realModes )
 	{
 		string localized = GetGameModeDisplayName( mode )
 		if ( filterArguments.filterGamemodes.find( localized ) != -1 )
 			continue
-
+		
 		filterArguments.filterGamemodes.append( localized )
 		Hud_DialogList_AddListItem( Hud_GetChild( file.menu, "SwtBtnSelectGamemode" ) , localized, string( enum_ + 1 ) )
 	}
@@ -136,7 +136,7 @@ void function InitServerBrowserMenu()
 
 	filterArguments.filterMaps = [ "SWITCH_ANY" ]
 	Hud_DialogList_AddListItem( Hud_GetChild( file.menu, "SwtBtnSelectMap" ), "SWITCH_ANY", "0" )
-
+	
 	filterArguments.filterGamemodes = [ "SWITCH_ANY" ]
 	Hud_DialogList_AddListItem( Hud_GetChild( file.menu, "SwtBtnSelectGamemode" ), "SWITCH_ANY", "0" )
 
@@ -713,14 +713,6 @@ void function FilterServerList()
 		}
 	}
 
-
-	printt("Better.Serverbrowser:------------------------")
-	printt("Server count: ", NSGetServerCount())
-	printt("Filtered count: ", file.serversArrayFiltered.len())
-	printt("Total players: ", totalPlayers)
-	printt("This message gets shown only on full refresh")
-	printt("---------------------------------------------")
-
 	Hud_SetText( Hud_GetChild( file.menu, "InGamePlayerCount" ), string( totalPlayers ) )
 	Hud_SetText( Hud_GetChild( file.menu, "TotalServerCount" ), string( NSGetServerCount() ) )
 }
@@ -842,7 +834,7 @@ void function DisplayFocusedServerInfo( int scriptID)
 	Hud_SetVisible( Hud_GetChild( menu, "LabelDescription" ), true )
 	Hud_SetVisible( Hud_GetChild( menu, "LabelMods" ), false )
 	//RuiSetGameTime( textRui, "startTime", -99999.99 ) // make sure it skips the whole animation for showing this
-	Hud_SetText( Hud_GetChild( menu, "LabelDescription" ), NSGetServerDescription( file.serversArrayFiltered[ serverIndex ].serverIndex ) + "\n\n所需要的模組Mods:\n" + FillInServerModsLabel( file.serversArrayFiltered[ serverIndex ].serverIndex ))
+	Hud_SetText( Hud_GetChild( menu, "LabelDescription" ), NSGetServerDescription( file.serversArrayFiltered[ serverIndex ].serverIndex ) + "\n\nRequired Mods:\n" + FillInServerModsLabel( file.serversArrayFiltered[ serverIndex ].serverIndex ))
 	//Hud_SetText( Hud_GetChild( menu, "LabelMods" ), FillInServerModsLabel( file.serversArrayFiltered[ serverIndex ].serverIndex ) )
 
 	// map name/image/server name
